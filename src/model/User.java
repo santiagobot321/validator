@@ -37,7 +37,7 @@ public abstract class User implements Autenticable{
         return email;
     }
 
-    private String getPassword() {
+    public String getPassword() {
         return password;
     }
 
@@ -45,10 +45,21 @@ public abstract class User implements Autenticable{
         return blocked;
     }
 
-    public abstract void showProfile(); // sin implementación
+    public abstract void showProfile();
 
     @Override
     public boolean Authenticated(String email, String password) {
         return !blocked && this.email.equals(email) && this.getPassword().equals(password);
     }
+
+    // En Usuario.java (la clase abstracta)
+    public void block() {
+        setBlocked(true);
+    }
+
+    public void unblock() {
+        setBlocked(false);
+    }
+
+
 }
